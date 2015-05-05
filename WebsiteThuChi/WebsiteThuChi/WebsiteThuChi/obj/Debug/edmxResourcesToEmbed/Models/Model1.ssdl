@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="255" />
+    <Property Name="LoginDate" Type="datetime" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="255" />
+    <Property Name="CustomerAddress" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Income">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IncomeDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="IncomeName" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="IncomeLineUp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="Asset" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="InputDate" Type="datetime" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+    <Property Name="IncomeId" Type="int" />
+  </EntityType>
+  <EntityType Name="Outcome">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OutcomeDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="OutcomeName" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="OutcomeLineUp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Asset" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="InputDate" Type="datetime" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+    <Property Name="OutcomeId" Type="int" />
+  </EntityType>
+  <Association Name="FK_IncomeLineUp_Customers">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+    <End Role="IncomeLineUp" Type="Self.IncomeLineUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncomeLineUp">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IncomeLineUp_Income">
+    <End Role="Income" Type="Self.Income" Multiplicity="0..1" />
+    <End Role="IncomeLineUp" Type="Self.IncomeLineUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Income">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncomeLineUp">
+        <PropertyRef Name="IncomeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OutcomeLineUp_Customers">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+    <End Role="OutcomeLineUp" Type="Self.OutcomeLineUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OutcomeLineUp">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OutcomeLineUp_Outcome">
+    <End Role="Outcome" Type="Self.Outcome" Multiplicity="0..1" />
+    <End Role="OutcomeLineUp" Type="Self.OutcomeLineUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Outcome">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OutcomeLineUp">
+        <PropertyRef Name="OutcomeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TestDbModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Income" EntityType="Self.Income" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IncomeLineUp" EntityType="Self.IncomeLineUp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Outcome" EntityType="Self.Outcome" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OutcomeLineUp" EntityType="Self.OutcomeLineUp" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_IncomeLineUp_Customers" Association="Self.FK_IncomeLineUp_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="IncomeLineUp" EntitySet="IncomeLineUp" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IncomeLineUp_Income" Association="Self.FK_IncomeLineUp_Income">
+      <End Role="Income" EntitySet="Income" />
+      <End Role="IncomeLineUp" EntitySet="IncomeLineUp" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OutcomeLineUp_Customers" Association="Self.FK_OutcomeLineUp_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="OutcomeLineUp" EntitySet="OutcomeLineUp" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OutcomeLineUp_Outcome" Association="Self.FK_OutcomeLineUp_Outcome">
+      <End Role="Outcome" EntitySet="Outcome" />
+      <End Role="OutcomeLineUp" EntitySet="OutcomeLineUp" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

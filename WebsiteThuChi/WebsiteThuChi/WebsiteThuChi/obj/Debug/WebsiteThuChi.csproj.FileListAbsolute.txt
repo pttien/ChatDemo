@@ -1,0 +1,70 @@
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\WebsiteThuChi.dll.config
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\WebsiteThuChi.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\WebsiteThuChi.pdb
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\Antlr3.Runtime.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\EntityFramework.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\Microsoft.Web.Infrastructure.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\Newtonsoft.Json.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Net.Http.Formatting.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Http.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Http.WebHost.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Mvc.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Optimization.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Providers.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Razor.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.WebPages.Deployment.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.WebPages.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.WebPages.Razor.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\WebGrease.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\EntityFramework.xml
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\Newtonsoft.Json.xml
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Net.Http.Formatting.xml
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Http.xml
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Http.WebHost.xml
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Mvc.xml
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Razor.xml
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.WebPages.xml
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.WebPages.Deployment.xml
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\System.Web.WebPages.Razor.xml
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\obj\Debug\WebsiteThuChi.csprojResolveAssemblyReference.cache
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\obj\Debug\WebsiteThuChi.dll
+c:\users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\obj\Debug\WebsiteThuChi.pdb
+C:\Users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\EPPlus.dll
+C:\Users\tphan\documents\visual studio 2013\Projects\WebsiteThuChi\WebsiteThuChi\bin\EPPlus.xml
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\WebsiteThuChi.dll.config
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\WebsiteThuChi.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\WebsiteThuChi.pdb
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\Antlr3.Runtime.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\EntityFramework.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\EPPlus.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\Microsoft.Web.Infrastructure.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\Newtonsoft.Json.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Net.Http.Formatting.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Http.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Http.WebHost.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Mvc.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Optimization.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Providers.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Razor.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.WebPages.Deployment.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.WebPages.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.WebPages.Razor.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\WebGrease.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\EPPlus.xml
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\EntityFramework.xml
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\Newtonsoft.Json.xml
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Net.Http.Formatting.xml
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Http.xml
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Http.WebHost.xml
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Mvc.xml
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.Razor.xml
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.WebPages.xml
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.WebPages.Deployment.xml
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\System.Web.WebPages.Razor.xml
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\obj\Debug\WebsiteThuChi.csprojResolveAssemblyReference.cache
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\obj\Debug\WebsiteThuChi.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\obj\Debug\WebsiteThuChi.pdb
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\itextsharp.dll
+D:\Project\WebsiteThuChi\WebsiteThuChi\WebsiteThuChi\bin\RazorPDF.dll

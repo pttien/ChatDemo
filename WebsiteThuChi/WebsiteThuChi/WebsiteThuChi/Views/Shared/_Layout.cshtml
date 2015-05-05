@@ -1,0 +1,103 @@
+﻿    @{
+    if(Session["username"]==null)
+    {
+        Response.Redirect("Login");
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link href="../../Content/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="../../Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <link href="~/Content/datepicker.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/autoNumeric.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.bootstrap.js"></script>
+    <link href="~/Content/dataTables.bootstrap.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jqueryval")
+   
+
+</head>
+<body>
+    <div class="container-fluid">
+        <h2>
+            <span class="label label-success">HỆ THỐNG QUẢN LÝ THU CHI</span>
+        </h2>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="~/Home">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Trang Chủ", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Quản lý Thu", "Index", "Income")</li>
+                        <li>@Html.ActionLink("Quản lý Chi", "Index", "Outcome")</li>
+                        <li>@Html.ActionLink("Quản lý KH", "Index", "Customers")</li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Báo Cáo <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Thống Kê", "Index", "Analisys")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Xuất Report", "Index", "Report")</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Hello, @Session["fullname"]  <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Thông tin", "Index", "User")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Logout", "Index", "User")</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <section id="main" class="container">
+            @RenderBody()
+        </section>
+
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        var url = window.location;
+        var action = window.location.pathname.split('/')[1];
+        $('ul.nav a[href="/' + action + '"]').parent().addClass('active');
+        $('ul.nav a').filter(function () {
+            return this.href == url;
+        }).parent().addClass('active');
+        $('ul.dropdown-menu a[href="/' + action + '"]').parent().parent().parent().addClass('active');
+        $('ul.dropdown-menu a').filter(function () {
+            return this.href == url;
+        }).parent().parent().parent().addClass('active');
+    });
+
+
+</script> 

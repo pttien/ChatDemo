@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Skroll</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Scripts.Render("~/bundles/jquery")
+    <script src="../../Scripts/skrollr.js" type="text/javascript"></script>
+    <link href="../../Content/fixed-positioning.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/scroll.css" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div id="bigboy" data-0="background:rgb(255, 255, 255)" data-500="background:rgb(52, 152, 219)" data-10000="background:rgb(65, 189, 76)">
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">@Html.ActionLink("Quân Kul Đẹp Trai", "Index", "Home")</p>
+            </div>
+            <div class="float-right">
+                <nav>
+                        <ul id="menu">
+                            <li><a href="http://www.albinotonnina.com">Demo 1</a></li>
+                            <li> <a href="http://20141123.lulu-and-me.com"> Demo 2 </li>
+        
+                        </ul>
+                    </nav>
+            </div>
+        </div>
+        <div id="body">
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+    </div>
+</body>
+</html>

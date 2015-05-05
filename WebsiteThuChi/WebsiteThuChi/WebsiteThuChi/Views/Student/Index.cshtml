@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebsiteThuChi.Models.MarksCard>
+@{Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<body>
+    <table border="1" width='500' bordercolor="RED">
+        <tr>
+            <td colspan="3" bgcolor="LightGreen" align="center" valign="top">
+            SSLC Marks Sheet 2013
+            </td>
+        </tr>
+        <tr>
+            <td>
+            @{ var rollNumber = Model.Select(z => z.RollNo).Take(1).ToArray();}Riyaz Akhter<br />RollNo:@rollNumber[0]
+            </td>
+            <td colspan="2" align="left">
+            <img src="@Server.MapPath("~/Images/money.png")" width="100" height="100" />
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="lightblue">
+            @Html.DisplayNameFor(moel => moel.Subject)
+            </td>
+            <td bgcolor="lightblue">
+            @Html.DisplayNameFor(model => model.FullMarks)
+            </td>
+            <td bgcolor="lightblue">
+            @Html.DisplayNameFor(model => model.Obtained)
+            </td>
+        </tr>
+    @{int total = 0;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Subject)</td>
+            <td>@Html.DisplayFor(modelItem => item.FullMarks)</td>
+            <td>@Html.DisplayFor(modelItem => item.Obtained)</td>
+        </tr>total += item.Obtained;
+    }
+    <tr>
+        <td></td>
+        <td><strong><font color="GREEN">Total</font></strong></td>
+        <td>@total</td>
+   </tr>
+ </table>
+</body>
+</html>

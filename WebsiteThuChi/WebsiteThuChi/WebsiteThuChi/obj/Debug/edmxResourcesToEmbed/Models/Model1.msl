@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TestDbModelStoreContainer" CdmEntityContainer="TestDbEntities1">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="TestDbModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="TestDbModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incomes">
+      <EntityTypeMapping TypeName="TestDbModel.Income">
+        <MappingFragment StoreEntitySet="Income">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IncomeDate" ColumnName="IncomeDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IncomeName" ColumnName="IncomeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IncomeLineUps">
+      <EntityTypeMapping TypeName="TestDbModel.IncomeLineUp">
+        <MappingFragment StoreEntitySet="IncomeLineUp">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Asset" ColumnName="Asset" />
+          <ScalarProperty Name="InputDate" ColumnName="InputDate" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="IncomeId" ColumnName="IncomeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Outcomes">
+      <EntityTypeMapping TypeName="TestDbModel.Outcome">
+        <MappingFragment StoreEntitySet="Outcome">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OutcomeDate" ColumnName="OutcomeDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OutcomeName" ColumnName="OutcomeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OutcomeLineUps">
+      <EntityTypeMapping TypeName="TestDbModel.OutcomeLineUp">
+        <MappingFragment StoreEntitySet="OutcomeLineUp">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Asset" ColumnName="Asset" />
+          <ScalarProperty Name="InputDate" ColumnName="InputDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="OutcomeId" ColumnName="OutcomeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

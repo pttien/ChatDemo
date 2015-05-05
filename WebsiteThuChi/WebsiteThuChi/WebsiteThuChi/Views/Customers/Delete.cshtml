@@ -1,0 +1,37 @@
+﻿@model WebsiteThuChi.Models.Customer
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa Khách Hàng</h2>
+<div style="width:700px">
+    @using (Html.BeginForm("Delete", "Customers", FormMethod.Post))
+    {
+        
+        @Html.HiddenFor(model=>model.Id)
+        @Html.HiddenFor(model=>model.CustomerName)
+        @Html.HiddenFor(model=>model.CustomerAddress)
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerName)
+            <h3 class="text-primary"> @Html.DisplayFor(model => model.CustomerName)</h3>
+           </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerAddress)
+            <h3 class="text-primary"> @Html.DisplayFor(model => model.CustomerAddress, new { @class = "form-control" })</h3>
+</div>
+        <input type="submit" value="Xóa" class="btn btn-danger btn-lg" id="sumbit" />
+
+    }
+</div>
+<script>
+    $(function () {
+        $("#sumbit").click(function () {
+            if (confirm("Bạn có chắc muốn xóa không?")) {
+                return true;
+            }
+            return false;
+        });
+    });
+</script>

@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<div class="row">
+    <input type="button" id="exportincome" class="btn btn-primary btn-lg" value="Export Income" />
+    <input type="button" id="exportoucome" class="btn btn-primary btn-lg" value="Export Outcome" />
+</div>
+<script>
+
+    $(function () {
+        $('#exportincome').click(function () {
+
+            window.location.href = '@Url.Action("ExportToExcel","Report")';
+        });
+        $('#exportoucome').click(function () {
+
+            window.location.href = '@Url.Action("ExportToExcel1","Report")';
+        });
+    });
+</script>

@@ -1,0 +1,59 @@
+﻿@model WebsiteThuChi.Models.Account
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        @using(Html.BeginForm("Index","Login",FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+            <!--login modal-->
+        <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h1 class="text-center">Login</h1>
+              </div>
+              <div class="modal-body">
+                  <form class="form col-md-12 center-block">
+                    <div class="form-group">
+                        
+                        @if(ViewBag.meg!=null)
+                        {
+                            <span class="text-danger">@ViewBag.meg</span>
+                        }
+                      @Html.TextBoxFor(model => model.Username, new { @class = "form-control input-lg", @placeholder = "Username" })
+                       @Html.ValidationMessageFor(model => model.Username, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                      @Html.PasswordFor(model => model.Password, new { @class = "form-control input-lg", @placeholder = "Password" })
+                      @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In" /> 
+                     
+                      <span class="pull-right"><a href="#">Register</a></span>
+                    </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  
+              </div>
+            </div>
+            </div>
+          </div>
+        }
+   </div>
+@Scripts.Render("~/bundles/jqueryval")
+</body>
+</html>

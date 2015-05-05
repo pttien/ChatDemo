@@ -1,0 +1,67 @@
+﻿@model  IEnumerable<WebsiteThuChi.Models.Income>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+        $('#table1').dataTable();
+    })
+</script>
+
+<h2 class="page-header">Quản Lý Thu</h2>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Danh Sách Thu</h3>
+    </div>
+    <div class="panel-body" >       
+         <div >
+            <div style="padding:10px">
+                @Html.ActionLink("Thêm", "AddIncome", null, new { @class = "btn btn-success btn-lg glyphicon glyphicon-plus " })
+
+            </div>
+            <div class="table-responsive">
+                <table id="table1" class="table table-bordered table-striped table-hover" width="100%">
+                    <thead>
+                        <tr class="info">
+                            <th>
+                                Income Date
+                            </th>
+                            <th>
+                                <span>Income Name</span>
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @string.Format("{0:dd/MM/yyyy}", item.IncomeDate)
+
+                                </td>
+                                <td>
+                                    @item.IncomeName
+                                </td>
+                                <td>
+                                    <div class="form-inline" role="form">
+                                        <div class=" form-group">
+                                            <span data-toggle="tooltip" data-placement="left" title="Xem"> @Html.ActionLink(" ", "Detail", new { id = @item.Id }, new { @class = "btn btn-info glyphicon glyphicon-eye-open " })</span>
+                                            <span data-toggle="tooltip" data-placement="right" title="Sửa">@Html.ActionLink(" ", "Edit", new { id = @item.Id }, new { @class = "btn btn-primary glyphicon glyphicon-wrench" })</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

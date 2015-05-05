@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thống Kê</h2>
+ 
+
+
+
+
+<form id="form">
+    <div class="form-group">
+        <div class="form-inline">
+            Từ Ngày
+            @Html.TextBox("startDate", null, new { @class = "form-control datepicker" })
+            Đến Ngày
+            @Html.TextBox("endDate", null, new { @class = "form-control datepicker" })
+            <input type="button" id="btn" class="btn btn-primary btn-lg" value="Submit" />
+        </div>
+     </div>
+    
+</form>
+
+    <div class="row" style="margin: 0; padding: 0">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="piechart" style=" border:1px solid red; width:400px;height:300px;text-align:center"></div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="columnChart" style=" border: 1px solid red; width: 400px; height: 300px; text-align: center"></div>
+    </div>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script type="text/javascript">
+        google.load("visualization", "1", { packages: ["corechart"] });
+        $(function () {
+           
+            $('#btn').click(function ()
+            {
+                var sDate = $("#startDate").val();
+                var eDate = $("#endDate").val();
+                $.post('@Url.Action("GetTable","Analisys")', { startDate: sDate, endDate: eDate }, function (data) {
+                    var income = data.tIn;
+                    var outcome = data.tOut;
+                 
+                    var options = {
+                        legend: { position: 'bottom' },
+                        pointSize: 0,
+
+                    };
+
+                    var dataTable = new google.visualization.DataTable();
+
+                    dataTable.addColumn('string', 'Type');
+                    dataTable.addColumn('number', 'Value');
+
+                    dataTable.addRows([['Income', income]]);
+                    dataTable.addRows([['Outcome', outcome]]);
+                    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                    var colChart = new google.visualization.ColumnChart(document.getElementById('columnChart'));
+                    chart.draw(dataTable, options);
+                    colChart.draw(dataTable, options);
+                });
+             
+            });
+
+       
+            var checkin = $('#startDate').datepicker({}).on('changeDate', function (ev) {
+                if (ev.date.valueOf() > checkout.date.valueOf()) {
+                    var newDate = new Date(ev.date)
+                    newDate.setDate(newDate.getDate() + 1);
+                    checkout.setValue(newDate);
+                }
+                checkin.hide();
+                $('#endDate')[0].focus();
+            }).data('datepicker');
+
+
+            var checkout = $('#endDate').datepicker({
+                onRender: function (date) {
+                    return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+                }
+            }).on('changeDate', function (ev) {
+                checkout.hide();
+            }).data('datepicker');
+
+            
+            @*$('#btn').click(function () {
+                var sDate = $("#startDate").val();
+                var eDate = $("#endDate").val();
+                $.post('@Url.Action("GetTable","Analisys")', { startDate: sDate, endDate: eDate }, function (data) {
+                    var totalIn = data.totalIn;
+                    var totalOut = data.totalOut;
+                    //load the Google Visualization API and the chart
+                    google.load('visualization', '1', { 'packages': ['columnchart', 'piechart'] });
+
+                    //set callback
+                    google.setOnLoadCallback(createChart,totalIn,totalOut);
+
+                    //callback function
+
+
+                });
+            });
+            function createChart(totalIn, totalOut) {
+
+                //create data table object
+                var dataTable = new google.visualization.DataTable();
+
+                //define columns
+                dataTable.addColumn('string', 'Types');
+                dataTable.addColumn('number', 'Total');
+
+                //define rows of data
+                dataTable.addRows(['Income', totalIn], ['OutCome', totalOut]);
+
+                //instantiate our chart objects
+                var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
+                var secondChart = new google.visualization.PieChart(document.getElementById('Chart2'));
+
+                //define options for visualization
+                var options = { width: 400, height: 240, is3D: true, title: 'Thu Chi' };
+
+                //draw our chart
+                chart.draw(dataTable, options);
+                secondChart.draw(dataTable, options);
+
+            }*@
+        });
+
+</script>

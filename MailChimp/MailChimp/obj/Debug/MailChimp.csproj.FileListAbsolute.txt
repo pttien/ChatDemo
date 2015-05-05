@@ -1,0 +1,10 @@
+D:\Project\MailChimp\MailChimp\bin\Debug\MailChimp.exe.config
+D:\Project\MailChimp\MailChimp\bin\Debug\MailChimp.exe
+D:\Project\MailChimp\MailChimp\bin\Debug\MailChimp.pdb
+D:\Project\MailChimp\MailChimp\bin\Debug\FSharp.Core.dll
+D:\Project\MailChimp\MailChimp\bin\Debug\MailChimp.dll
+D:\Project\MailChimp\MailChimp\bin\Debug\FSharp.Core.xml
+D:\Project\MailChimp\MailChimp\bin\Debug\MailChimp.xml
+D:\Project\MailChimp\MailChimp\obj\Debug\MailChimp.csprojResolveAssemblyReference.cache
+D:\Project\MailChimp\MailChimp\obj\Debug\MailChimp.exe
+D:\Project\MailChimp\MailChimp\obj\Debug\MailChimp.pdb

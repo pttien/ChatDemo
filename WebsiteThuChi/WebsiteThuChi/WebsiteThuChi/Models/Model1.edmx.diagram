@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="193243b4e79e48a693d01db81dcc11f4" Name="Diagram1">
+        <EntityTypeShape EntityType="TestDbModel.Account" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDbModel.Customer" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDbModel.Income" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDbModel.IncomeLineUp" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDbModel.Outcome" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDbModel.OutcomeLineUp" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="TestDbModel.FK_IncomeLineUp_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDbModel.FK_OutcomeLineUp_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDbModel.FK_IncomeLineUp_Income" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDbModel.FK_OutcomeLineUp_Outcome" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

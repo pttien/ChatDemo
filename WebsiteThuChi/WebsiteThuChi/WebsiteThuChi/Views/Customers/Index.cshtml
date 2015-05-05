@@ -1,0 +1,46 @@
+﻿@model  IEnumerable<WebsiteThuChi.Models.Customer> 
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div style="padding:10px">
+        @Html.ActionLink("Thêm", "Add", null, new { @class = "btn btn-success" })
+    </div>
+    
+    <table class="table table-bordered table-striped table-hover" >
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model=>model.CustomerAddress)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.CustomerName
+                </td>
+                <td>
+                    @item.CustomerAddress
+                </td>
+                <td>
+                   <div class="form-inline" role="form">
+                       <div class=" form-group">
+                           @Html.ActionLink("Xem", "Detail", new { id = @item.Id }, new { @class = "btn btn-info" })
+                           @Html.ActionLink("Sửa", "Edit", new { id = @item.Id }, new { @class = "btn btn-primary" })
+                           @Html.ActionLink("Xóa", "Delete", new { id = @item.Id }, new { @class = "btn btn-danger" })
+                       </div>
+                   </div>
+                </td>
+            </tr>
+        }
+     </table>
+</div>

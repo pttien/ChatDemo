@@ -1,0 +1,135 @@
+﻿@model OutcomeDto
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+<form id="form">
+    @Html.ValidationSummary(true)
+    @Html.Hidden("OutcomeId", Model.Id)
+    <div class="form-group">
+        Outcome Name
+        @Html.TextBox("OutcomeName", Model.OutcomeName, new { @class = "form-control", @id = "OutcomeName" })
+        <span class="text-danger">  @Html.ValidationMessageFor(model => model.OutcomeName)</span>
+    </div>
+    <div class="form-group">
+        Outcome Date
+        <h4> @string.Format("{0:dd/MM/yyyy}", Model.OutcomeDate)</h4>
+    </div>
+    <div style="margin-bottom: 10px">
+        <input id="btnAddLineUp" type="button" value="Thêm Outcome" class="btn btn-primary btn-lg" />
+    </div>
+    @Html.Hidden("LineupID", 0, new { @class = "lineupid" })
+    <table class="table table-bordered table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>Notes</th>
+                <th>Asset</th>
+                <th>Customer</th>
+            </tr>
+        </thead>
+        <tbody id="lineUpBody">
+            <tr id="newLineUp" class="hidden">
+                <td>@Html.TextBox("Note", 0, new { @class = "form-control notes" })</td>
+                <td>@Html.TextBox("Asset", 0, new { @class = "form-control assets" })</td>
+                <td>
+                    @Html.DropDownList("Customer", LookupViewModel.GetCustomerList(), new { @class = "form-control customers" })
+                </td>
+            </tr>
+
+            
+            @if (Model.LineUp != null && Model.LineUp.Any())
+            {
+                foreach (var item in Model.LineUp)
+                {
+                    @Html.Hidden("LineupID", @item.Id, new { @class = "lineupid" })
+                    <tr class="incomeLineUp">
+                        <td>@Html.TextBox("Notes", @item.Notes, new { @class = "form-control notes" })</td>
+                        <td>@Html.TextBox("Assets", @item.Asset, new { @class = "form-control assets" })</td>
+                        <td>
+                            @Html.DropDownList("Customer", LookupViewModel.GetCustomerList(@item.Customer.Id.ToString()), new { @class = "form-control customers" })
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="incomeLineUp">
+                    <td colspan="3"> No Line-Up found </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    <input type="button" id="btnAdd" class="btn btn-primary btn-lg" value="Edit" />
+</form>
+
+<script>
+
+    $(function () {
+        $(".datepicker").datepicker();
+        $('.assets').autoNumeric('init', { aSign: ' VND', pSign: 's', wEmpty: 'zero', aPad: false });
+        $("#btnAddLineUp").click(function () {
+
+            var newLineUp = $("#newLineUp");
+            var clone = newLineUp.clone();
+            clone.removeClass("hidden");
+            $("#lineUpBody").append(clone);
+            $('.assets').autoNumeric('init', { aSign: ' VND', pSign: 's', wEmpty: 'zero', aPad: false });
+        });
+        $("#btnAdd").click(function () {
+            var frm=$("#form");
+            var name = $("#OutcomeName").val();
+            var date = $("#Outcomedate").val();
+            var noteValues = "";
+            var notes = $('.notes');
+            var assets = $('.assets');
+            var customers = $('.customers');
+            var assetValues = "";
+            var customerValues = "";
+            var lineupValues = "";
+            var lineupid = $('.lineupid');
+            notes.each(function () {
+                noteValues += $(this).val() + ";";
+            });
+            assets.each(function () {
+                assetValues += $(this).autoNumeric('get') + ";";
+            });
+            customers.each(function () {
+                customerValues += $(this).val() + ";";
+            });
+            lineupid.each(function () {
+                lineupValues += $(this).val() + ";";
+            });
+            if(frm.valid())
+            {
+                $.post('@Url.Action("Edit","Outcome")', {
+                    outcomeName: name,
+                    outcomeID: $("#OutcomeId").val(),
+                    notes: noteValues,
+                    assets: assetValues,
+                    customerID: customerValues,
+                    lineupId: lineupValues
+                }, function (data) {
+                    if(data.result)
+                    {
+                        window.location.href = '@Url.Action("Index","Outcome")';
+                    }
+                    else
+                    {
+                        alert("fail");
+                    }
+                });
+            }
+        });
+    });
+</script>

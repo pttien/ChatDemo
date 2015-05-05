@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Sharing";
+}
+<div id="intro" data-0="opacity:1;transform:rotate(0deg);transform-origin:0 0;" data-500="opacity:0;transform:rotate(-90deg);">
+    <div class="content-wrapper">
+        <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        <p>
+            I will help you some guide to help you build some wonderful website like : <a href="http://www.albinotonnina.com/"
+                title="CV">CV Page http://www.albinotonnina.com</a> or <a href="http://20141123.lulu-and-me.com"
+                    title="Weeding">Weeding page http://20141123.lulu-and-me.com</a>. The page
+            demo will help you get the most from sKroll. If you have any questions about jKroll,
+            please give me a coffee cup first.
+        </p>
+    </div>
+</div>
+<div class="ready" data-200="transform:scale(0) rotate(0deg);" data-400="transform:scale(1) rotate(1440deg);opacity:1;"
+    data-600="transform:scale(1) rotate(1440deg);opacity:0;">
+    <img src="../../Images/are_you_ready_01.jpg" />
+</div>
+<div class="ready" data-400="opacity:0;" data-600="opacity:1;" data-800="opacity:0;">
+    <img src="../../Images/are_you_ready_03.jpg" />
+</div>
+<div id="transform" data-900="transform:scale(0) rotate(0deg);" data-1200="transform:scale(1) rotate(1440deg);opacity:1;"
+    data-1600="" data-1700="transform:scale(5) rotate(3240deg);opacity:0;">
+    <h2>
+        First, you have to imaging how far you scroll</h2>
+    <p>
+        data-0: begin</p>
+    <p>
+        data-500: 500px from 0</p>
+    <p>
+        data-500-end: 500 pixel to the end</p>
+    <p>
+        data-1000: 1000px from 0</p>
+    <p>
+        data-2000: 2000 <- 0</p>
+    <p>
+        data-end: end</p>
+</div>
+<div id="properties" data-1700="top:100%;" data-2200="top:10%;" data-3000="display:block;"
+    data-3700="top:-100%;display:none;">
+    <h2>
+        all numeric properties</h2>
+    <p>
+        width, height, padding, font-size, z-index, blah blah blah</p>
+    <p>
+        There are what I do: <b>data-1700="top:100%;" data-2200="top:0%;" data-3000="display:block;"
+            data-3700="top:-100%;display:none;"</b>
+    </p>
+</div>
+<div id="blove_wrapper" data-smooth-scrolling="off">
+    <div id="doyouloveme" data-3900="left:100%" data-4600="left:45%;right[vibrate]:10px"
+        data-4800="left:45%;margin-right[vibrate]:20px" data-5000="left:55%;margin-left[vibrate]:10px"
+        data-5300="left:-100%">
+        <h2>
+            Do you love it ?</h2>
+        <img src="../../Images/h.png" width="300px" />
+    </div>
+</div>
+ <div data-4400="left:100%" data-5000="left:40%">
+        <b>Tự sướng tí...</b></div>
+<div id="slide_wrapper">
+    <div class="slide_image" data-5400="left:100%" data-6000="left:0%"  data-6300="left:-100%">
+        <img src="../../Images/1.jpg" />
+    </div>
+    <div class="slide_image" data-6400="left:100%" data-7000="left:0%" data-7300="left:-100%">
+        <img src="../../Images/2.jpg" />
+    </div>
+    <div class="slide_image" data-7400="left:100%" data-8000="left:0%" data-8300="left:-100%">
+        <img src="../../Images/8.jpg" />
+    </div>
+    <div class="slide_image" data-8400="left:100%" data-9000="left:10%">
+        <img src="../../Images/12.jpg" />
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        skrollr.init({
+            forceHeight: true,
+            easing: {
+                vibrate: function (p) {
+                    return Math.sin(p * 10 * Math.PI);
+                }
+            }
+        });
+    });
+</script>

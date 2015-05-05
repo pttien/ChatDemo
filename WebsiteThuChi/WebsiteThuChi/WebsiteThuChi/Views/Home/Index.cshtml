@@ -1,0 +1,31 @@
+﻿@model WebsiteThuChi.Models.Account
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string fname = "";
+}
+
+
+@if(Session["Fullname"]!=null)
+{
+     fname = Session["Fullname"].ToString();
+}
+<h2>Hello @fname</h2>
+
+<input type="text" id="textt" />
+<input type="button" value="Uppercase" />
+<p id="Textvalue"></p>
+<script src="http://sugarjs.com/release/current/sugar.min.js"></script>
+<script type="text/javascript">
+
+    $('#Uppercase').click(function () {
+        alert('sjahdgfjdas');
+        var value = $('#textt').val();
+        var text = toTitleCase(value);
+        $('#Textvalue').html(value.capitalize(true));
+    });
+    function toTitleCase(str) {
+        return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+    }
+</script>

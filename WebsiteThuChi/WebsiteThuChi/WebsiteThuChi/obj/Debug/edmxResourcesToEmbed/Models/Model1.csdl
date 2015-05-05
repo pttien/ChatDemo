@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LoginDate" Type="DateTime" Precision="3" />
+    <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="IncomeLineUps" Relationship="Self.FK_IncomeLineUp_Customers" FromRole="Customers" ToRole="IncomeLineUp" />
+    <NavigationProperty Name="OutcomeLineUps" Relationship="Self.FK_OutcomeLineUp_Customers" FromRole="Customers" ToRole="OutcomeLineUp" />
+  </EntityType>
+  <EntityType Name="Income">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IncomeDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IncomeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="IncomeLineUps" Relationship="Self.FK_IncomeLineUp_Income" FromRole="Income" ToRole="IncomeLineUp" />
+  </EntityType>
+  <EntityType Name="IncomeLineUp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="Asset" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="InputDate" Type="DateTime" Precision="3" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IncomeId" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_IncomeLineUp_Customers" FromRole="IncomeLineUp" ToRole="Customers" />
+    <NavigationProperty Name="Income" Relationship="Self.FK_IncomeLineUp_Income" FromRole="IncomeLineUp" ToRole="Income" />
+  </EntityType>
+  <EntityType Name="Outcome">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OutcomeDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="OutcomeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OutcomeLineUps" Relationship="Self.FK_OutcomeLineUp_Outcome" FromRole="Outcome" ToRole="OutcomeLineUp" />
+  </EntityType>
+  <EntityType Name="OutcomeLineUp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Asset" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="InputDate" Type="DateTime" Precision="3" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OutcomeId" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_OutcomeLineUp_Customers" FromRole="OutcomeLineUp" ToRole="Customers" />
+    <NavigationProperty Name="Outcome" Relationship="Self.FK_OutcomeLineUp_Outcome" FromRole="OutcomeLineUp" ToRole="Outcome" />
+  </EntityType>
+  <Association Name="FK_IncomeLineUp_Customers">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="IncomeLineUp" Type="Self.IncomeLineUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncomeLineUp">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OutcomeLineUp_Customers">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="OutcomeLineUp" Type="Self.OutcomeLineUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OutcomeLineUp">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IncomeLineUp_Income">
+    <End Role="Income" Type="Self.Income" Multiplicity="0..1" />
+    <End Role="IncomeLineUp" Type="Self.IncomeLineUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Income">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncomeLineUp">
+        <PropertyRef Name="IncomeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OutcomeLineUp_Outcome">
+    <End Role="Outcome" Type="Self.Outcome" Multiplicity="0..1" />
+    <End Role="OutcomeLineUp" Type="Self.OutcomeLineUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Outcome">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OutcomeLineUp">
+        <PropertyRef Name="OutcomeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TestDbEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Incomes" EntityType="Self.Income" />
+    <EntitySet Name="IncomeLineUps" EntityType="Self.IncomeLineUp" />
+    <EntitySet Name="Outcomes" EntityType="Self.Outcome" />
+    <EntitySet Name="OutcomeLineUps" EntityType="Self.OutcomeLineUp" />
+    <AssociationSet Name="FK_IncomeLineUp_Customers" Association="Self.FK_IncomeLineUp_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="IncomeLineUp" EntitySet="IncomeLineUps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OutcomeLineUp_Customers" Association="Self.FK_OutcomeLineUp_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="OutcomeLineUp" EntitySet="OutcomeLineUps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IncomeLineUp_Income" Association="Self.FK_IncomeLineUp_Income">
+      <End Role="Income" EntitySet="Incomes" />
+      <End Role="IncomeLineUp" EntitySet="IncomeLineUps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OutcomeLineUp_Outcome" Association="Self.FK_OutcomeLineUp_Outcome">
+      <End Role="Outcome" EntitySet="Outcomes" />
+      <End Role="OutcomeLineUp" EntitySet="OutcomeLineUps" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,133 @@
+﻿@model AddIncomeDto
+
+@{
+    ViewBag.Title = "AddIncome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quản lý thu</h2>
+<style>
+    .hidden {
+        display:none;
+    }
+</style>
+
+<form   id="frmIncome">
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        Income Name
+        @Html.TextBoxFor(model => model.IncomeName, new { @class = "form-control", @id="IncomeName" })
+        <span class="text-danger">  @Html.ValidationMessageFor(model => model.IncomeName)</span>
+    </div>
+    <div class="form-group">
+        Income Date
+        @Html.TextBoxFor(model => model.InputDate, new { @class = "form-control datepicker", @id = "incomedate" })
+        <span class="text-danger"> @Html.ValidationMessageFor(model => model.InputDate, "", new { @id="validateDate"})</span>
+    </div>
+
+    <div style="margin-bottom: 10px">
+        <input id="btnAddLineUp" type="button" value="Thêm income" class="btn btn-primary btn-lg" />
+    </div>
+
+    <table class="table table-bordered table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>Notes</th>
+                <th>Asset</th>
+                <th>Customer</th>
+            </tr>
+        </thead>
+        <tbody id="lineUpBody">
+            <tr id="newLineUp" class="hidden">
+                <td>@Html.TextBox("Note", 0, new { @class = "form-control notes" })</td>
+                <td>@Html.TextBox("Asset", 0, new { @class = "form-control assets" })</td>
+                <td>
+                    @Html.DropDownList("Customer", LookupViewModel.GetCustomerList(), new { @class = "form-control customers" })
+                </td>
+            </tr>
+            <tr class="incomeLineUp">
+                <td>@Html.TextBox("Note", string.Empty, new { @class = "form-control notes" })</td>
+                <td>@Html.TextBox("Asset", string.Empty, new { @class = "form-control assets" })</td>
+                <td>
+                    @Html.DropDownList("Customer", LookupViewModel.GetCustomerList(), new { @class = "form-control customers" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <input type="submit" id="btnAdd" value="Thêm" class="btn btn-primary btn-lg" />
+
+
+
+</form>
+    <script type="text/javascript">
+        $(function () {
+            var clone = $('#newLineUp');
+            $(".datepicker").datepicker();
+            $('.assets').autoNumeric('init', { aSign: ' VND', pSign: 's', wEmpty: 'zero', aPad: false });
+            $('#btnAddLineUp').click(function () {
+                var lineUpBody = $('#lineUpBody');
+                var newLineUp = $('#newLineUp');
+                var clone = newLineUp.clone();
+                clone.removeClass("hidden");
+                lineUpBody.append(clone);
+                $('.assets').autoNumeric('init', { aSign: ' VND', pSign: 's', wEmpty: 'zero', aPad: false });
+            });
+          
+            $('#btnAdd').click(function () {
+                var noteValues = "";
+                var notes = $('.notes');
+                var assets = $('.assets');
+                var customers = $('.customers');
+                var assetValues = "";
+                var customerValues = "";
+                notes.each(function () {
+                    noteValues += $(this).val() + ";";
+                });
+                assets.each(function () {
+                    assetValues += $(this).autoNumeric('get') + ";";
+                });
+                customers.each(function () {
+                    customerValues += $(this).val() + ";";
+                });
+                var frm = $('#frmIncome');
+               
+                if (frm.valid()) {
+                    var incomeDate = $('#incomedate').val();
+                    $.post('@Url.Action("CheckDuplicateIncome","Income")', { incomeDate: incomeDate }, function (data) {
+                        if (data.duplicate) {
+                            $.post('@Url.Action("AddIncome","Income")', {
+                                incomeName: $('#IncomeName').val(), incomeDate: $('#incomedate').val(),
+                                assets: assetValues, notes: noteValues,
+                                customerId: customerValues
+                            }, function (data) {
+
+                                if (data.success) {
+                                    var back = '@Url.Action("Index","Income")';
+                                    window.location.href = back;
+                                }
+                                else {
+                                    alert("fail");
+                                }
+                            });
+                        }
+                        else {
+                          //  $('#validateDate').css('display','normal')
+                            return;
+                        }
+
+                    });
+
+                    
+                   
+                }
+                
+                
+
+            });
+
+
+        });
+    </script>
+

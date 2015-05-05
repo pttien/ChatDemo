@@ -1,0 +1,49 @@
+﻿@model OutcomeDto
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-condensed table-striped ">
+        <tr>
+            <th>
+                <span>Customer</span>
+            </th>
+            <th>
+                <span>Asset</span>
+            </th>
+
+            <th>
+                <span>Notes</span>
+            </th>
+            <th>
+                <span>Outcome Name</span>
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model.LineUp)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Asset)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.OutcomeName)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>
